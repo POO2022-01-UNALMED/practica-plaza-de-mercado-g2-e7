@@ -1,5 +1,8 @@
 package gestorAplicacion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase: Duenho
  * Esta clase es la clase que permite administrar la informacion de los dueños
@@ -8,12 +11,18 @@ package gestorAplicacion;
 
 public class Duenho extends Persona{
 	
+	static List<Duenho> duenhos;
+	static {
+		duenhos = new ArrayList<Duenho>();
+	}
+	
 	/**
      * Este constructor es usado para llamar al constructor de la clase Persona
      * y asi estar seguros de que se van a generar unos datos iniciales
      */
     public Duenho() {
     	super();
+    	duenhos.add(this);
     }
 
     /**
@@ -37,4 +46,12 @@ public class Duenho extends Persona{
         return "Cedula: " + cedula + "\nNombre: " + nombre + "\nTelefono: " + telefono + "\nDireccion: " + direccion
                 + "\nGenero: " + genero + "\nEstado civil: " + estadoCivil;
     }
+    
+    public static List<Duenho> getduenhos() {
+		return duenhos;
+	}
+
+	public static void setduenhos(List<Duenho> duenhos) {
+		Duenho.duenhos = duenhos;
+	}
 }

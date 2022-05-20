@@ -1,5 +1,8 @@
 package gestorAplicacion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Clase: Codeudor
  * Esta clase es la clase que permite administrar la informacion de los codeudores
@@ -7,12 +10,18 @@ package gestorAplicacion;
  */
 
 public class Codeudor extends Persona{
+	
+	static List<Codeudor> codeudores;
+	static {
+		 codeudores = new ArrayList<Codeudor>();
+	 }
 	/**
      * Este constructor es usado para llamar al constructor de la clase Persona
      * y asi estar seguros de que se van a generar unos datos iniciales
      */
     public Codeudor() {
     	super();
+    	codeudores.add(this);
     }
 
     /**
@@ -37,4 +46,12 @@ public class Codeudor extends Persona{
         return "Cedula: " + cedula + "\nNombre: " + nombre + "\nTelefono: " + telefono + "\nDireccion: " + direccion
                 + "\nGenero: " + genero + "\nEstado civil: " + estadoCivil;
     }
+    
+    public static List<Codeudor> getCodeudores() {
+		return codeudores;
+	}
+
+	public static void setCodeudores(List<Codeudor> codeudores) {
+		Codeudor.codeudores = codeudores;
+	}
 }
