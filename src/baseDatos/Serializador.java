@@ -51,5 +51,6 @@ public class Serializador {
 		Serializador.serializar(Codeudor.getCodeudores(), "Codeudor");
 		Serializador.serializar(Duenho.getduenhos(), "CajasRegistradoras");
 		Serializador.serializar(Cliente.getClientes(), "Clientes");
+		Serializador.serializar(Contrato.getContratos(), "Contratos");
 	}
 }

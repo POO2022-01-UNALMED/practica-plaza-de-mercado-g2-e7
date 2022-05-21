@@ -72,5 +72,6 @@ public class Deserializador {
 		Deserializador.deserializador(Codeudor.getCodeudores(), "Codeudor");
 		Deserializador.deserializador(Duenho.getduenhos(), "CajasRegistradoras");
 		Deserializador.deserializador(Cliente.getClientes(), "Clientes");
+		Deserializador.deserializador(Contrato.getContratos(), "Contratos");
 	}
 }
