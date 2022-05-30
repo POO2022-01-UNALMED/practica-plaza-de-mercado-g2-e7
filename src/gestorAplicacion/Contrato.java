@@ -10,7 +10,7 @@ import java.util.List;
  * @author: Daniel Puentes
  */
 
-public class Contrato {
+public class Contrato extends Persona {
 	
 	private int numero;
     private Date fechaInicio;
@@ -19,7 +19,7 @@ public class Contrato {
     private String fechaFinSTR;
     private int montoMensual;
     private String nombreInterventor;
-    private int cedulaContrato;
+    private int cedulaCliente;
     private int codigoLocal;
     static List<Contrato> Contratos;
 	static {
@@ -35,7 +35,7 @@ public class Contrato {
         fechaFin = null;
         montoMensual = 0;
         nombreInterventor = "";
-        cedulaContrato = 0;
+        cedulaCliente = 0;
         codigoLocal = 0;
         Contratos.add(this);
     }
@@ -50,16 +50,9 @@ public class Contrato {
         this.fechaFin = fechaFin;
         this.montoMensual = montoMensual;
         this.nombreInterventor = nombreInterventor;
-        this.cedulaContrato = cedulaContrato;
+        this.cedulaCliente = cedulaCliente;
         this.codigoLocal = codigoLocal;
         Contratos.add(this);
-    }
-    
-    /**
-     * Este metodo se encarga de solicitar los datos y hacer una validacion los mismos 
-     */
-    public String obtenerDatos() {
-    	return "Ingrese el nombre del interventor" + this.getNombreInterventor();
     }
     
     /**
@@ -69,7 +62,7 @@ public class Contrato {
 
         return "Numero de contrato: " + numero + "\nFecha de inicio: " + fechaInicioSTR + "\nFecha de finalizacion: "
                 + fechaFinSTR + "\nMonto mensual: " + montoMensual + "\nNombre del interventor: " + nombreInterventor
-                + "\nCedula del Contrato: " + cedulaContrato + "\nCodigo del local: " + codigoLocal;
+                + "\nCedula del Contrato: " + cedulaCliente + "\nCodigo del local: " + codigoLocal;
 
     }
 
@@ -113,12 +106,12 @@ public class Contrato {
         this.nombreInterventor = nombreInterventor;
     }
 
-    public int getCedulaContrato() {
-        return this.cedulaContrato;
+    public int getCedulaCliente() {
+        return this.cedulaCliente;
     }
 
-    public void setCedulaContrato(int cedulaContrato) {
-        this.cedulaContrato = cedulaContrato;
+    public void setCedulaCliente(int cedulaCliente) {
+        this.cedulaCliente = cedulaCliente;
     }
 
     public int getCodigoLocal() {

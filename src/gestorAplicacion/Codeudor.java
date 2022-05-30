@@ -24,18 +24,6 @@ public class Codeudor extends Persona{
     	codeudores.add(this);
     }
 
-    /**
-     * Este metodo se encarga de leer los atributos de la clase, y es implementado
-     * desde su clase heredera Persona
-     * @return 
-     */
-    public String obtenerDatos() {
-    	return "Ingrese el nombre del codeudor" + this.getNombre() +
-		"Ingrese el telefono del codeudor" + this.getTelefono() +
-		"Ingrese la direccion del codeudor" + this.getDireccion() +
-		"Ingrese el genero del codeudor (M o F)" + this.getGenero() +
-		"Ingrese el estado civil del codeudor" + this.getEstadoCivil();
-    }
 
     /**
      * Este metodo es implementado de la clase Persona, retorna la cedula y el nombre de la persona, 

@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Clase: Cliente
- * Esta clase es la clase que permite administrar la informacion de los clientes
+ * Esta clase es la clase que permite administrar la información de los clientes
  * @author: Daniel Puentes
  */
 
@@ -21,7 +21,7 @@ public class Cliente extends Persona{
 	/**
 	 * Este constructor es usado para llamar al constructor de la clase Persona
 	 * y asi estar seguros de que se van a generar unos datos iniciales,
-	 * ademas inicializa la cedula de ambos codeudores
+	 * además inicializa la cédula de ambos codeudores
 	 */
 	public Cliente() {
 		super();
@@ -41,19 +41,7 @@ public class Cliente extends Persona{
 	    this.cedulaCodeudor2 = cedulaCodeudor2;
 	    clientes.add(this);
 	}
-	 
-	/**
-	 * Este metodo se encarga de leer los atributos de la clase, y es implementado
-	 * desde su clase heredera Persona
-	 * @return 
-	 */
-	public String obtenerDatos() {
-	return "Ingrese el nombre del cliente" + this.getNombre() +
-			"Ingrese el telefono del cliente" + this.getTelefono() +
-			"Ingrese la direccion del cliente" + this.getDireccion() +
-			"Ingrese el genero del cliente (M o F)" + this.getGenero() +
-			"Ingrese el estado civil del cliente" + this.getEstadoCivil();
-	}
+
 	 
 	/**
 	 * Este metodo es implementado de la clase Persona, retorna la informacion completa de la clase,

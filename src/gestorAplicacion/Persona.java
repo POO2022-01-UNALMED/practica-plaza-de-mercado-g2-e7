@@ -2,9 +2,9 @@ package gestorAplicacion;
 
 /**
  * Clase: Persona
- * Esta clase es abstracta ya que no es de interes crear instancias de ella
+ * Esta clase es abstracta, ya que no es de interes crear instancias de ella
  * Se utilizara para que las clases Duenho, Cliente y Codeudor hereden sus atributos
- * E implementen los metodos obtenerDatos() y retornarInformacion()
+ * E implementen los métodos obtenerDatos() y retornarInformacion()
  * @author: Daniel Puentes
  */
 
@@ -40,12 +40,6 @@ public abstract class Persona {
         this.genero = genero;
         this.estadoCivil = estadoCivil;
     }
-
-    /**
-     * Este metodo es abstracto ya que cada clase heredera lo implementara a su manera
-     * y se encarga de leer los atributos de la clase
-     */
-    public abstract String obtenerDatos();
 
     /**
      * Este metodo retorna la informacion completa de la clase, que puede ser utilizada
