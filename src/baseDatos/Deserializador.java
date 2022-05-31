@@ -21,7 +21,7 @@ public class Deserializador {
 	 * 
 	 * @param <E>       el generico se usa para poder agredar las clases que se
 	 *                  crearon
-	 * @param lista     Una lista de objetos
+	 * @param list     Una lista de objetos
 	 * @param className El nombre de la clase que queremos usar como nombre del
 	 *                  archivo
 	 */
@@ -73,5 +73,7 @@ public class Deserializador {
 		Deserializador.deserializador(Duenho.getduenhos(), "CajasRegistradoras");
 		Deserializador.deserializador(Cliente.getClientes(), "Clientes");
 		Deserializador.deserializador(Contrato.getContratos(), "Contratos");
+		Deserializador.deserializador(Sector.getSectores(), "Sectores");
+		Deserializador.deserializador(Local.getLocales(), "Locales");
 	}
 }

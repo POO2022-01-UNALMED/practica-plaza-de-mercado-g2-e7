@@ -49,8 +49,10 @@ public class Serializador {
 	 */
 	public static void serializarTodo() {
 		Serializador.serializar(Codeudor.getCodeudores(), "Codeudor");
-		Serializador.serializar(Duenho.getduenhos(), "CajasRegistradoras");
+		Serializador.serializar(Duenho.getduenhos(), "Duenhos");
 		Serializador.serializar(Cliente.getClientes(), "Clientes");
 		Serializador.serializar(Contrato.getContratos(), "Contratos");
+		Serializador.serializar(Sector.getSectores(), "Sectores");
+		Serializador.serializar(Local.getLocales(), "Locales");
 	}
 }

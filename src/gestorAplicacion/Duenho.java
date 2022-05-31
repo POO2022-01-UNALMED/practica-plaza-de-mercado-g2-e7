@@ -5,12 +5,15 @@ import java.util.List;
 
 /**
  * Clase: Duenho
- * Esta clase es la clase que permite administrar la informacion de los dueños
+ * Esta clase es la clase que permite administrar la información de los dueños
  * @author: Daniel Puentes
  */
 
 public class Duenho extends Persona{
-	
+
+	// Constantes
+	private static final long serialVersionUID = 1L;
+
 	static List<Duenho> duenhos;
 	static {
 		duenhos = new ArrayList<Duenho>();
@@ -26,9 +29,9 @@ public class Duenho extends Persona{
     }
 
     /**
-     * Este metodo es implementado de la clase Persona, retorna la cedula y el nombre de la persona, 
-     * y se implemento para que al momento de listar las personas se diera una informacion resumida
-     * @return La cedula y el nombre de la persona
+     * Este método es implementado de la clase Persona, retorna la cédula y el nombre de la persona,
+     * y se implementó para que al momento de listar las personas se diera una información resumida
+     * @return La cédula y el nombre de la persona
      */
     public String retornarInformacion() {
         return "Cedula: " + cedula + "\nNombre: " + nombre + "\nTelefono: " + telefono + "\nDireccion: " + direccion

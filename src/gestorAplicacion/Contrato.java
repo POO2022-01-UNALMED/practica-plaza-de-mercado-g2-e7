@@ -1,5 +1,6 @@
 package gestorAplicacion;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author: Daniel Puentes
  */
 
-public class Contrato extends Persona {
+public class Contrato implements Serializable {
 	
 	private int numero;
     private Date fechaInicio;
@@ -21,6 +22,10 @@ public class Contrato extends Persona {
     private String nombreInterventor;
     private int cedulaCliente;
     private int codigoLocal;
+
+    // Constantes
+    private static final long serialVersionUID = 1L;
+
     static List<Contrato> Contratos;
 	static {
 		Contratos = new ArrayList<Contrato>();
@@ -44,7 +49,7 @@ public class Contrato extends Persona {
      * Este constructor sirve para inicializar los datos con valores
      * dados al momento de instanciar la clase
      */
-    public Contrato(int numero, Date fechaInicio, Date fechaFin, int montoMensual, String nombreInterventor, int cedulaContrato, int codigoLocal) {
+    public Contrato(int numero, Date fechaInicio, Date fechaFin, int montoMensual, String nombreInterventor, int cedulaCliente, int codigoLocal) {
     	this.numero = numero;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
