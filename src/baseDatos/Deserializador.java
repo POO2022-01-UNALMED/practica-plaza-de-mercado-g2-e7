@@ -9,7 +9,8 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import gestorAplicacion.*;
+import gestorAplicacion.clientes.*;
+import gestorAplicacion.infraestructura.*;
 
 /**
  * Clase para deserializar los objetos que se crearon en ejecucion
@@ -18,7 +19,7 @@ public class Deserializador {
 	/**
 	 * Utilizamos clases genericas para permitir reutilizar la funcion para todas
 	 * las clases del proyecto
-	 * 
+	 *
 	 * @param <E>       el generico se usa para poder agredar las clases que se
 	 *                  crearon
 	 * @param list     Una lista de objetos
@@ -30,7 +31,7 @@ public class Deserializador {
 		try {
 			// Creamos una cadena con la ruta del archivo que vamos a cargar
 			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
-			System.out.println(path);
+			/*System.out.println(path);*/
 			// utilizamos un file para crear este archivo si no existe aun
 			File archivo = new File(path);
 			archivo.createNewFile(); // Crea un nuevo archivo si no existe
@@ -66,11 +67,11 @@ public class Deserializador {
 	}
 
 	/**
-	 * Funcion para deserializar toda la aplicacion Generic IT
+	 * Funcion para deserializar toda la aplicacion
 	 */
 	public static void deserializarTodo() {
 		Deserializador.deserializador(Codeudor.getCodeudores(), "Codeudor");
-		Deserializador.deserializador(Duenho.getduenhos(), "CajasRegistradoras");
+		Deserializador.deserializador(Duenho.getDuenhos(), "Duenhos");
 		Deserializador.deserializador(Cliente.getClientes(), "Clientes");
 		Deserializador.deserializador(Contrato.getContratos(), "Contratos");
 		Deserializador.deserializador(Sector.getSectores(), "Sectores");

@@ -1,5 +1,6 @@
-package gestorAplicacion;
+package gestorAplicacion.clientes;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class Codeudor extends Persona implements Serializable {
 
 	static List<Codeudor> codeudores;
 	static {
-		 codeudores = new ArrayList<Codeudor>();
+		 codeudores = new ArrayList<>();
 	 }
 	/**
      * Este constructor es usado para llamar al constructor de la clase Persona

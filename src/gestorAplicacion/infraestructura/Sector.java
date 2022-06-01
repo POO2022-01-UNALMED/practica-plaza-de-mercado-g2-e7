@@ -1,4 +1,6 @@
-package gestorAplicacion;
+package gestorAplicacion.infraestructura;
+
+import gestorAplicacion.clientes.Duenho;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -179,6 +181,6 @@ public class Sector implements Serializable {
     }
 
     public String toString() {
-        return "Codigo: " + codigo + "\nNombre: " + nombre + "\nPrecio base por M2: $" + precioBaseM2;
+        return retornarInformacion();
     }
 }

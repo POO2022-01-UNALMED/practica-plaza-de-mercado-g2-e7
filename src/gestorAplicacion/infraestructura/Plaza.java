@@ -1,4 +1,8 @@
-package gestorAplicacion;
+package gestorAplicacion.infraestructura;
+
+import gestorAplicacion.clientes.Cliente;
+import gestorAplicacion.clientes.Codeudor;
+import gestorAplicacion.clientes.Duenho;
 
 import java.util.ArrayList;
 
@@ -45,7 +49,7 @@ public class Plaza {
         this.codeudores = codeudores;
         this.contratos = contratos;
     }
-    
+
 
     /**
      * Este método se encarga de contar y retornar la cantidad de locales existentes en la plaza

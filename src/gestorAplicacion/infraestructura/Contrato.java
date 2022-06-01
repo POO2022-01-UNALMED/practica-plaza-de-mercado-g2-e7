@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package gestorAplicacion.infraestructura;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import java.util.List;
  */
 
 public class Contrato implements Serializable {
-	
-	private int numero;
+
+    private int numero;
     private Date fechaInicio;
     private Date fechaFin;
     private String fechaInicioSTR;
@@ -27,15 +27,15 @@ public class Contrato implements Serializable {
     private static final long serialVersionUID = 1L;
 
     static List<Contrato> Contratos;
-	static {
-		Contratos = new ArrayList<Contrato>();
-	}
-	
+    static {
+        Contratos = new ArrayList<Contrato>();
+    }
+
     /**
      * Este constructor sirve para inicializar los datos y asi evitar errores
      */
     public Contrato() {
-    	numero = 0;
+        numero = 0;
         fechaInicio = null;
         fechaFin = null;
         montoMensual = 0;
@@ -44,13 +44,13 @@ public class Contrato implements Serializable {
         codigoLocal = 0;
         Contratos.add(this);
     }
-    
+
     /**
      * Este constructor sirve para inicializar los datos con valores
      * dados al momento de instanciar la clase
      */
     public Contrato(int numero, Date fechaInicio, Date fechaFin, int montoMensual, String nombreInterventor, int cedulaCliente, int codigoLocal) {
-    	this.numero = numero;
+        this.numero = numero;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.montoMensual = montoMensual;
@@ -59,9 +59,9 @@ public class Contrato implements Serializable {
         this.codigoLocal = codigoLocal;
         Contratos.add(this);
     }
-    
+
     /**
-     * Este metodo retorna la informacion que tiene almacenada 
+     * Este metodo retorna la informacion que tiene almacenada
      */
     public String retornarInformacion() {
 
@@ -126,12 +126,12 @@ public class Contrato implements Serializable {
     public void setCodigoLocal(int codigoLocal) {
         this.codigoLocal = codigoLocal;
     }
-    
-    public static List<Contrato> getContratos() {
-		return Contratos;
-	}
 
-	public static void setContratos(List<Contrato> Contratos) {
-		Contrato.Contratos = Contratos;
-	}
+    public static List<Contrato> getContratos() {
+        return Contratos;
+    }
+
+    public static void setContratos(List<Contrato> Contratos) {
+        Contrato.Contratos = Contratos;
+    }
 }

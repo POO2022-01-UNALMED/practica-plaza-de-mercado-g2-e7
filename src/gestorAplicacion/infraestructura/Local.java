@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package gestorAplicacion.infraestructura;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Clase: Local
- * Esta clase es la clase que permite administrar la información de los locales
+ * Esta clase es la clase que permite administrar la informaciï¿½n de los locales
  * @author: Daniel Puentes
  */
 
@@ -54,28 +54,28 @@ public class Local implements Serializable {
         this.ocupado = ocupado;
         locales.add(this);
     }
-    
+
     /**
-     * Este método retorna la información completa de la clase, que puede ser utilizada para crear reportes
-     * y por ende listar los locales o simplemente ver la información de un local
-     * @return La información completa de la clase
+     * Este mï¿½todo retorna la informaciï¿½n completa de la clase, que puede ser utilizada para crear reportes
+     * y por ende listar los locales o simplemente ver la informaciï¿½n de un local
+     * @return La informaciï¿½n completa de la clase
      */
     public String retornarInformacion() {
         return "Codigo: " + codigo + "\nTiene techo: " + (techo ? "Si" : "No") + "\nTiene camara refrigerante: "
-                + (camaraRefrigerante ? "Si" : "No") + "\nTamaño: " + tamanho + "m2\nPrecio base dado por el dueño: $"
-                + precioBase + "\nCedula del dueño: " + cedulaDuenho + "\nOcupado: " + (ocupado ? "Si" : "No");
+                + (camaraRefrigerante ? "Si" : "No") + "\nTamaï¿½o: " + tamanho + "m2\nPrecio base dado por el dueï¿½o: $"
+                + precioBase + "\nCedula del dueï¿½o: " + cedulaDuenho + "\nOcupado: " + (ocupado ? "Si" : "No");
     }
 
     /**
-     * Este método retorna el código del local
-     * @return Código del local
+     * Este mï¿½todo retorna el cï¿½digo del local
+     * @return Cï¿½digo del local
      */
     public int getCodigo() {
         return this.codigo;
     }
 
     /**
-     * Este método asigna el código al local
+     * Este mï¿½todo asigna el cï¿½digo al local
      * @param codigo a asignar
      */
     public void setCodigo(int codigo) {
@@ -83,7 +83,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna si el local tiene techo o no
+     * Este mï¿½todo retorna si el local tiene techo o no
      * @return Local tiene techo
      */
     public boolean isTecho() {
@@ -91,7 +91,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna el valor del techo del local
+     * Este mï¿½todo retorna el valor del techo del local
      * @return Techo del local
      */
     public boolean getTecho() {
@@ -99,7 +99,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método asigna el estado del techo al local
+     * Este mï¿½todo asigna el estado del techo al local
      * @param techo a asignar
      */
     public void setTecho(boolean techo) {
@@ -107,7 +107,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna si el local tiene camara refrigerante o no
+     * Este mï¿½todo retorna si el local tiene camara refrigerante o no
      * @return Local tiene camara refrigerante
      */
     public boolean isCamaraRefrigerante() {
@@ -115,7 +115,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna la camara refrigerante del local
+     * Este mï¿½todo retorna la camara refrigerante del local
      * @return Camara refrigerante del local
      */
     public boolean getCamaraRefrigerante() {
@@ -123,7 +123,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método asigna el estado de la camara refrigerante al local
+     * Este mï¿½todo asigna el estado de la camara refrigerante al local
      * @param camaraRefrigerante a asignar
      */
     public void setCamaraRefrigerante(boolean camaraRefrigerante) {
@@ -131,15 +131,15 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna el tamaño del local
-     * @return Tamaño del local
+     * Este mï¿½todo retorna el tamaï¿½o del local
+     * @return Tamaï¿½o del local
      */
     public int getTamanho() {
         return this.tamanho;
     }
 
     /**
-     * Este método asigna el tamaño al local
+     * Este mï¿½todo asigna el tamaï¿½o al local
      * @param tamanho a asignar
      */
     public void setTamanho(int tamanho) {
@@ -147,7 +147,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna el precio base del local
+     * Este mï¿½todo retorna el precio base del local
      * @return Precio base del local
      */
     public int getPrecioBase() {
@@ -155,7 +155,7 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método asigna el precio base al local
+     * Este mï¿½todo asigna el precio base al local
      * @param precioBase a asignar
      */
     public void setPrecioBase(int precioBase) {
@@ -163,15 +163,15 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna la cédula del dueño del local
-     * @return Cédula del dueño del local
+     * Este mï¿½todo retorna la cï¿½dula del dueï¿½o del local
+     * @return Cï¿½dula del dueï¿½o del local
      */
     public int getCedulaDuenho() {
         return this.cedulaDuenho;
     }
 
     /**
-     * Este método asigna la cédula del dueño al local
+     * Este mï¿½todo asigna la cï¿½dula del dueï¿½o al local
      * @param cedulaDuenho a asignar
      */
     public void setCedulaDuenho(int cedulaDuenho) {
@@ -179,23 +179,23 @@ public class Local implements Serializable {
     }
 
     /**
-     * Este método retorna si el local está ocupado
-     * @return Local está ocupado
+     * Este mï¿½todo retorna si el local estï¿½ ocupado
+     * @return Local estï¿½ ocupado
      */
     public boolean isOcupado() {
         return this.ocupado;
     }
 
     /**
-     * Este método retorna si el local está ocupado
-     * @return Local está ocupado
+     * Este mï¿½todo retorna si el local estï¿½ ocupado
+     * @return Local estï¿½ ocupado
      */
     public boolean getOcupado() {
         return this.ocupado;
     }
 
     /**
-     * Este método asigna el estado de ocupación al local
+     * Este mï¿½todo asigna el estado de ocupaciï¿½n al local
      * @param ocupado a asignar
      */
     public void setOcupado(boolean ocupado) {

@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
-import gestorAplicacion.*;
+import gestorAplicacion.clientes.*;
+import gestorAplicacion.infraestructura.*;
 
 /**
  * Se utiliza para serializar todos los objetos creados durante la ejecucion
@@ -16,7 +17,7 @@ import gestorAplicacion.*;
 public class Serializador {
 	/**
 	 * Serializamos una lista por el nombre de la clase
-	 * 
+	 *
 	 * @param <E>       el generico se usa para poder agredar las clases que se
 	 *                  crearon
 	 * @param lista     Una lista de objetos
@@ -49,7 +50,7 @@ public class Serializador {
 	 */
 	public static void serializarTodo() {
 		Serializador.serializar(Codeudor.getCodeudores(), "Codeudor");
-		Serializador.serializar(Duenho.getduenhos(), "Duenhos");
+		Serializador.serializar(Duenho.getDuenhos(), "Duenhos");
 		Serializador.serializar(Cliente.getClientes(), "Clientes");
 		Serializador.serializar(Contrato.getContratos(), "Contratos");
 		Serializador.serializar(Sector.getSectores(), "Sectores");

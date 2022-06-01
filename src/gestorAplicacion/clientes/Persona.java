@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package gestorAplicacion.clientes;
 
 /**
  * Clase: Persona
@@ -9,18 +9,18 @@ package gestorAplicacion;
  */
 
 public abstract class Persona {
-	protected int cedula;
+    protected int cedula;
     protected String nombre;
     protected int telefono;
     protected String direccion;
     protected char genero;
     protected String estadoCivil;
-    
+
     /**
      * Este constructor sirve para inicializar los datos y asi evitar errores
      */
     public Persona() {
-    	cedula = 0;
+        cedula = 0;
         nombre = "";
         telefono = 0;
         direccion = "";
@@ -33,7 +33,7 @@ public abstract class Persona {
      * dados al momento de instanciar la clase
      */
     public Persona(int cedula, String nombre, int telefono, String direccion, char genero, String estadoCivil) {
-    	this.cedula = cedula;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -54,7 +54,7 @@ public abstract class Persona {
      * que al momento de listar las personas se diera una información resumida
      * @return La cédula y el nombre de la persona
      */
-    protected String retornarInformacionCorta() {
+    public String retornarInformacionCorta() {
         return "Cedula: " + cedula + "\nNombre: " + nombre;
     }
 

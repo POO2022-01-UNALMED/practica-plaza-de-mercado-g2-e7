@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package gestorAplicacion.clientes;
 
 import baseDatos.Serializador;
 
@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public class Cliente extends Persona implements Serializable {
-	
+
 	private int cedulaCodeudor1;
 	private int cedulaCodeudor2;
 	static List<Cliente> clientes;
@@ -23,7 +23,7 @@ public class Cliente extends Persona implements Serializable {
 
 	// Constantes
 	private static final long serialVersionUID = 1L;
-	 
+
 
 	/**
 	 * Este constructor es usado para llamar al constructor de la clase Persona
@@ -32,11 +32,11 @@ public class Cliente extends Persona implements Serializable {
 	 */
 	public Cliente() {
 		super();
-	    cedulaCodeudor1 = 0;
-	    cedulaCodeudor2 = 0;
-	    clientes.add(this);
+		cedulaCodeudor1 = 0;
+		cedulaCodeudor2 = 0;
+		clientes.add(this);
 	}
-	 
+
 	/**
 	 * Este constructor sirve para inicializar los datos con valores
 	 * dados al momento de instanciar la clase, además de también llamar
@@ -44,12 +44,12 @@ public class Cliente extends Persona implements Serializable {
 	 */
 	public Cliente(int cedulaCodeudor1, int cedulaCodeudor2) {
 		super();
-	    this.cedulaCodeudor1 = cedulaCodeudor1;
-	    this.cedulaCodeudor2 = cedulaCodeudor2;
-	    clientes.add(this);
+		this.cedulaCodeudor1 = cedulaCodeudor1;
+		this.cedulaCodeudor2 = cedulaCodeudor2;
+		clientes.add(this);
 	}
 
-	 
+
 	/**
 	 * Este método es implementado de la clase Persona, retorna la información completa de la clase,
 	 *  que puede ser utilizada para crear reportes y por ende listar las personas o simplemente ver
@@ -59,9 +59,9 @@ public class Cliente extends Persona implements Serializable {
 	public String retornarInformacion() {
 		return "Cedula: " + cedula + "\nNombre: " + nombre + "\nTelefono: " + telefono + "\nDireccion: " + direccion
 				+ "\nGenero: " + genero + "\nEstado civil: " + estadoCivil + "\nCedula del codeudor #1: "
-	            + cedulaCodeudor1 + "\nCedula del codeudor #2: " + cedulaCodeudor2;
+				+ cedulaCodeudor1 + "\nCedula del codeudor #2: " + cedulaCodeudor2;
 	}
-	 
+
 	/**
 	 * Este método retorna la cédula del codeudor #1 del cliente
 	 * @return Cédula del codeudor #1
@@ -75,7 +75,7 @@ public class Cliente extends Persona implements Serializable {
 	 * @param cedulaCodeudor1 a asignar
 	 */
 	public void setCedulaCodeudor1(int cedulaCodeudor1) {
-	    this.cedulaCodeudor1 = cedulaCodeudor1;
+		this.cedulaCodeudor1 = cedulaCodeudor1;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Cliente extends Persona implements Serializable {
 	 * @return Cédula del codeudor #2
 	 */
 	public int getCedulaCodeudor2() {
-	    return this.cedulaCodeudor2;
+		return this.cedulaCodeudor2;
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class Cliente extends Persona implements Serializable {
 	public void setCedulaCodeudor2(int cedulaCodeudor2) {
 		this.cedulaCodeudor2 = cedulaCodeudor2;
 	}
-	 
+
 	public static List<Cliente> getClientes() {
 		return clientes;
 	}

@@ -2,13 +2,8 @@ package uMain;
 
 import baseDatos.Deserializador;
 import baseDatos.Serializador;
-import gestorAplicacion.Cliente;
-import gestorAplicacion.Codeudor;
-import gestorAplicacion.Contrato;
-import gestorAplicacion.Duenho;
-import gestorAplicacion.Local;
-import gestorAplicacion.Plaza;
-import gestorAplicacion.Sector;
+import gestorAplicacion.clientes.*;
+import gestorAplicacion.infraestructura.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.text.ParseException;
@@ -86,11 +81,12 @@ public class Main {
      * a la lista de locales dentro de dicho sector
      */
     public static void agregarLocal() {
-        if (plaza.getSectores().size() == 0) {
+        if (plaza.getSectores().size() == 0 && Sector.getSectores().size() == 0) {
             mostrarMensajes("Antes de agregar locales debe agregar sectores a la plaza");
         }
-        else if (plaza.getDuenhos().size() == 0)
+        else if (plaza.getDuenhos().size() == 0 && Duenho.getDuenhos().size() == 0) {
             mostrarMensajes("Antes de agregar locales debe agregar dueños");
+        }
         else {
             int codigoSector = -1;
 
@@ -152,7 +148,8 @@ public class Main {
      * Este método se encarga de crear un cliente nuevo y agregarlo a la lista de clientes
      */
     public static void registrarCliente() {
-        if (plaza.getCodeudores().size() == 0 || plaza.getCodeudores().size() == 1)
+        if ((plaza.getCodeudores().size() == 0 || plaza.getCodeudores().size() == 1)
+        && (Codeudor.getCodeudores().size() == 0 || Codeudor.getCodeudores().size() == 1))
             mostrarMensajes("Para registrar un cliente deben existir por lo menos 2 codeudores");
 
         else {
@@ -282,7 +279,6 @@ public class Main {
         int indice = -1;
 
         do {
-
             mostrarMensajes("Ingrese la cedula del cliente\n\n" + plaza.mostrarClientes());
 
             indice = plaza.buscarCliente(sc.nextInt());
@@ -693,11 +689,12 @@ public class Main {
     public static Sector generarSectorAleatorio() {
         Random random = new Random();
 
-        int[] codigoSector = {99, 98, 98};
+        int[] codigoSector = {99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85};
 
-        String[] nombreSector = {"Minorista", "Mayorista", "Placita", "Tunjuelito"};
+        String[] nombreSector = {"Minorista", "Mayorista", "Placita", "Tunjuelito", "Galeria", "La Alameda"};
 
-        int[] precioBaseSector = {10000000, 15000000, 20000000, 25000000};
+        int[] precioBaseSector = {10000000, 13000000, 15000000, 17000000, 20000000, 23000000, 25000000,
+                27000000, 30000000};
 
         Local[] locales = {
                 new Local(99, false, false, 500, 500000, 4378, false),
@@ -715,62 +712,194 @@ public class Main {
 
     }
 
+    public static Duenho generarDuenhoAleatorio() {
+        Random random = new Random();
+
+        int[] cedulaDuenho = {1001, 1000, 1002, 1003, 1004, 1010, 1100};
+
+        String[] nombreDuenho = {"Daniel Puentes", "Fernanda Arango", "Thomas Rueda", "Andres Soto",
+                "Angela Patiño", "Mary Bayona", "Brandon Salinas"};
+
+        int[] telefonoDuenho = {2147000, 2054028, 6104548, 3927814, 5054028, 4440123, 2406038, 3054967};
+
+        String[] direccionDuenho = {"Cll 63", "Cra 45", "Cll 65", "Cra 80", "Dg 98", "Cll 10", "Cra 70"};
+
+        char[] generoDuenho = {'M', 'F'};
+
+        String[] estadoCivilDuenho = {"Soltero", "Casado", "Union Libre"};
+
+        return new Duenho(cedulaDuenho[random.nextInt(cedulaDuenho.length)], nombreDuenho[random.nextInt(nombreDuenho.length)],
+                telefonoDuenho[random.nextInt(telefonoDuenho.length)], direccionDuenho[random.nextInt(direccionDuenho.length)],
+                generoDuenho[random.nextInt(generoDuenho.length)], estadoCivilDuenho[random.nextInt(estadoCivilDuenho.length)]);
+    }
+
     public static Codeudor generarCodeudorAleatorio() {
         Random random = new Random();
 
-        int[] cedulaCodeudor = {1001, 1000, 1002, 1003, 1004, 1010, 1100};
+        int[] cedulaCodeudor = {2001, 2000, 2002, 2003, 2004, 2010, 2100};
 
-        String[] nombreCodeudor = {"Daniel Puentes", "Fernanda Arango", "Thomas Rueda", "Andres Soto",
-                "Angela Patiño", "Mary Bayona", "Brandon Salinas"};
+        String[] nombreCodeudor = {"Felipe Rocha", "Antonia Garcia", "Linda Perez", "Mario Guerra",
+                "Juan Gonzalez", "Jeronimo Ochoa", "Victor Orozco"};
 
-        int[] telefonoCodeudor = {2147000, 2054028, 6104548, 3927814, 5054028, 4440123, 2406038, 3054967};
+        int[] telefonoCodeudor = {5475233, 7845655, 7845112, 2561948, 417651, 9846511, 2506590, 5616518};
 
-        String[] direccionCodeudor = {"Cll 63", "Cra 45", "Cll 65", "Cra 80", "Dg 98", "Cll 10", "Cra 70"};
+        String[] direccionDuenho = {"Cll 36", "Cra 54", "Cll 56", "Cra 8", "Dg 89", "Cll 1", "Cra 7"};
 
-        char[] generoCodeudor = {'M', 'F' };
+        char[] generoCodeudor = {'M', 'F'};
 
         String[] estadoCivilCodeudor = {"Soltero", "Casado", "Union Libre"};
 
         return new Codeudor(cedulaCodeudor[random.nextInt(cedulaCodeudor.length)], nombreCodeudor[random.nextInt(nombreCodeudor.length)],
-                telefonoCodeudor[random.nextInt(telefonoCodeudor.length)], direccionCodeudor[random.nextInt(direccionCodeudor.length)],
+                telefonoCodeudor[random.nextInt(telefonoCodeudor.length)], direccionDuenho[random.nextInt(direccionDuenho.length)],
                 generoCodeudor[random.nextInt(generoCodeudor.length)], estadoCivilCodeudor[random.nextInt(estadoCivilCodeudor.length)]);
     }
 
-        public static int menuOpcionesAvanzadas(){
-            mostrarMensajes(
-                    "Bienvenido a las opciones avanzadas de '" + Plaza.nombre + "'"
-                            + "\n\n1) Generar sector a la plaza"
-                            + "\n2) Salir de opciones avanzadas"
-                            + "\n\nSeleccione una opcion"
-            );
+    public static int menuOpcionesAvanzadas(){
+        mostrarMensajes(
+                "Bienvenido a las opciones avanzadas de '" + Plaza.nombre + "'"
+                        + "\n\n1) Acceder al menu de automatizacion"
+                        + "\n2) Mostrar datos guardados"
+                        + "\n3) Salir de opciones avanzadas"
+                        + "\n\nSeleccione una opcion"
+        );
 
-            return sc.nextInt();
-        }
-        public static void opcionesAvanzadas(){
-            Sector sector;
+        return sc.nextInt();
+    }
+    public static void opcionesAvanzadas() {
+        int opc2 = -1;
 
-            int opc1 = -1;
+        while (opc2 != 3) {
 
-            while (opc1 != 2) {
+            opc2 = menuOpcionesAvanzadas();
 
-                opc1 = menuOpcionesAvanzadas();
+            switch (opc2) {
+                case 1:
+                    automatizacion();
+                    break;
 
-                switch (opc1) {
-                    case 1:
-                        sector = generarSectorAleatorio();
-                        mostrarMensajes("Se genero satisfactoriamente el sector:" + (Sector.getSectores().size() - 1
-                        + sector.toString())
-                    + sector);
-                        break;
+                case 2:
+                    mostrar();
+                    break;
 
-                    case 2:
-                        mostrarMensajes("Saliendo de opciones avanzadas...");
-                        break;
+                case 3:
+                    guardar();
+                    mostrarMensajes("Saliendo de opciones avanzadas...");
+                    break;
 
-                    default:
-                        mostrarMensajes("Ingrese una opción valida");
-                        break;
-                }
+                default:
+                    mostrarMensajes("Ingrese una opción valida");
+                    break;
             }
         }
+    }
+
+
+
+    public static int menuAutomatizacion() {
+        mostrarMensajes(
+                "Que datos deseas automatizar de '" + Plaza.nombre + "'"
+                        + "\n\n1) Generar sector a la plaza"
+                        + "\n2) Generar duenho aleatorio"
+                        + "\n3) Generar codeudor aleatorio"
+                        + "\n4) Salir de automatizacion"
+                        + "\n\nSeleccione una opcion"
+        );
+
+        return sc.nextInt();
+    }
+
+    public static int menuMostrar() {
+        mostrarMensajes(
+                "Que deseas ver de '" + Plaza.nombre + "'"
+                        + "\n\n1) Mostrar sectores guardados"
+                        + "\n2) Mostrar duenhos guardados"
+                        + "\n3) Mostrar codeudores guardados"
+                        + "\n4) Salir de menu de mostrar datos"
+                        + "\n\nSeleccione una opcion"
+        );
+
+        return sc.nextInt();
+    }
+
+    public static void automatizacion() {
+        Sector sector;
+        Duenho duenho;
+        Codeudor codeudor;
+
+        int opc3 = -1;
+
+        while (opc3 != 4) {
+
+            opc3 = menuAutomatizacion();
+
+            switch (opc3) {
+                case 1:
+                    sector = generarSectorAleatorio();
+                    mostrarMensajes("Se genero satisfactoriamente el sector: " + (Sector.getSectores().size() - 1)
+                            + sector.retornarInformacion() + "\n");
+
+                case 2:
+                    duenho = generarDuenhoAleatorio();
+                    mostrarMensajes("Se genero satisfactoriamente el duenho: " + (Duenho.getDuenhos().size() - 1)
+                            + duenho.retornarInformacion() + "\n");
+
+                case 3:
+                    codeudor = generarCodeudorAleatorio();
+                    mostrarMensajes("Se genero satisfactoriamente el codeudor: " + (Codeudor.getCodeudores().size() - 1)
+                            + codeudor.retornarInformacion() + "\n");
+
+                case 4:
+                    guardar();
+                    mostrarMensajes("Saliendo del menu de automatizacion...");
+
+                default:
+                    mostrarMensajes("Ingrese una opcion valida");
+            }
+        }
+    }
+
+    public static void mostrar() {
+        Sector sector;
+        Duenho duenho;
+        Codeudor codeudor;
+
+        int opc4 = -1;
+
+        while (opc4 != 4) {
+
+            opc4 = menuMostrar();
+
+            switch (opc4) {
+                case 1:
+                    for (int i = 0; i < Sector.getSectores().size(); i++){
+                        sector = Sector.getSectores().get(i);
+                        mostrarMensajes("Sector: " + i + sector.retornarInformacion());
+                    }
+                    break;
+
+                case 2:
+                    for (int i = 0; i < Duenho.getDuenhos().size(); i++){
+                        duenho = Duenho.getDuenhos().get(i);
+                        mostrarMensajes("Duenho: " + i + duenho.retornarInformacion());
+                    }
+                    break;
+
+                case 3:
+                    for (int i = 0; i < Codeudor.getCodeudores().size(); i++){
+                        codeudor = Codeudor.getCodeudores().get(i);
+                        mostrarMensajes("Codeudor: " + i + codeudor.retornarInformacion());
+                    }
+                    break;
+
+                case 4:
+                    guardar();
+                    mostrarMensajes("Saliendo del menu de mostrar...");
+                    break;
+
+                default:
+                    mostrarMensajes("Ingrese una opcion valida");
+                    break;
+            }
+        }
+    }
 }
