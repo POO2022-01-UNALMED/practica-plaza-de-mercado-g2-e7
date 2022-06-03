@@ -153,7 +153,7 @@ public class Main {
      */
     public static void registrarCliente() {
         if ((plaza.getCodeudores().size() == 0 || plaza.getCodeudores().size() == 1)
-        && (Codeudor.getCodeudores().size() == 0 || Codeudor.getCodeudores().size() == 1))
+                && (Codeudor.getCodeudores().size() == 0 || Codeudor.getCodeudores().size() == 1))
             mostrarMensajes("Para registrar un cliente deben existir por lo menos 2 codeudores" + "\n");
 
         else {
@@ -324,16 +324,18 @@ public class Main {
      * Este método muestra un listado de los locales desocupados en el momento
      */
     public static void mostrarLocalesDesocupados() {
+        Local local;
         String listado = "Listado de los locales desocupados\n\n";
 
-        for (Sector sector : Sector.getSectores()) {
-            for (Local local : sector.getLocales())
-                if (!local.isOcupado())
-                    listado += "\n" + local.retornarInformacion() + "\n\n";
-                else {
-                    mostrarMensajes("No hay locales desocupados" + "\n");
-                }
+        for (int i = 0; i < Local.getLocales().size(); i++){
+            local = Local.getLocales().get(i);
+            if (!local.isOcupado())
+                listado += "\n" + local.retornarInformacion() + "\n\n";
+            else {
+                mostrarMensajes("No hay locales desocupados" + "\n");
+            }
         }
+
 
         mostrarMensajes(listado);
     }
@@ -342,15 +344,17 @@ public class Main {
      * Este método muestra un listado de los locales ocupados en el momento
      */
     public static void mostrarLocalesOcupados() {
+        Local local;
         String listado = "Listado de los locales ocupados\n\n";
 
-        for (Sector sector : Sector.getSectores())
-            for (Local local : sector.getLocales())
-                if (local.isOcupado())
-                    listado += "\n" + local.retornarInformacion() + "\n\n";
-                else{
-                    mostrarMensajes("No hay locales ocupados" + "\n");
-                }
+        for (int i = 0; i < Local.getLocales().size(); i++) {
+            local = Local.getLocales().get(i);
+            if (local.isOcupado())
+                listado += "\n" + local.retornarInformacion() + "\n\n";
+            else {
+                mostrarMensajes("No hay locales ocupados" + "\n");
+            }
+        }
         mostrarMensajes(listado);
     }
 

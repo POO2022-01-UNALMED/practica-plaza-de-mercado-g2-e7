@@ -61,7 +61,7 @@ public class Sector implements Serializable {
 
     /**
      * Este método retorna la información completa de la clase, sin incluir la de los locales,
-     * puede ser utilizada para crear reportes y por ende listar los sectores o simplemente ver 
+     * puede ser utilizada para crear reportes y por ende listar los sectores o simplemente ver
      * la información de un sector de forma resumida
      * @return La información completa de la clase
      */
@@ -106,6 +106,11 @@ public class Sector implements Serializable {
         String informacion = "";
         for (Local local : locales)
             informacion += local.retornarInformacion() + "\n\n";
+
+        for (int i = 0; i < Local.getLocales().size(); i++) {
+            Local local = Local.getLocales().get(i);
+            informacion = local.retornarInformacion() + "\n\n";
+        }
         return informacion;
     }
 

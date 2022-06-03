@@ -61,7 +61,7 @@ public class Contrato implements Serializable {
 
         return "Numero de contrato: " + numero + "\nFecha de inicio: " + fechaInicioSTR + "\nFecha de finalizacion: "
                 + fechaFinSTR + "\nMonto mensual: " + montoMensual + "\nNombre del interventor: " + nombreInterventor
-                + "\nCedula del Contrato: " + cedulaCliente + "\nCodigo del local: " + codigoLocal;
+                + "\nCedula del Contrato: " + cedulaCliente + "\nCodigo del local: " + codigoLocal + "\n";
 
     }
 

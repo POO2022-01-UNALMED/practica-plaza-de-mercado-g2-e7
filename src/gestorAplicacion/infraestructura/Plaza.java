@@ -106,7 +106,7 @@ public class Plaza implements Serializable {
 
         for (int i = 0; i < Sector.getSectores().size(); i++){
             Sector sector = Sector.getSectores().get(i);
-            informacion += sector.retornarInformacionSinLocales() + "\n";
+            informacion = sector.retornarInformacionSinLocales() + "\n";
         }
         return informacion;
     }
@@ -125,7 +125,7 @@ public class Plaza implements Serializable {
 
         for (int i = 0; i < Sector.getSectores().size(); i++){
             Sector sector = Sector.getSectores().get(i);
-            informacion += sector.retornarInformacionLocales() + "\n";
+            informacion = sector.retornarInformacionLocales() + "\n";
         }
         return informacion;
     }

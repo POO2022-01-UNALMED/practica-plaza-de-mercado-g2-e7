@@ -18,8 +18,8 @@ public class Automatizacion {
 
         int[] tamanhoLocal = {50, 51, 52, 53, 54, 55, 56, 57, 58, 59};
 
-        int[] precioBaseLocal = {10000000, 13000000, 15000000, 17000000, 20000000, 23000000, 25000000,
-                27000000, 30000000};
+        int[] precioBaseLocal = {10000, 13000, 15000, 17000, 20000, 23000, 25000,
+                27000, 30000};
 
         int[] cedulaLocal = {5000, 5001, 5002, 5003, 5004};
 
@@ -37,8 +37,8 @@ public class Automatizacion {
 
         String[] nombreSector = {"Minorista", "Mayorista", "Placita", "Tunjuelito", "Galeria", "La Alameda"};
 
-        int[] precioBaseSector = {10000000, 13000000, 15000000, 17000000, 20000000, 23000000, 25000000,
-                27000000, 30000000};
+        int[] precioBaseSector = {10000, 13000, 15000, 17000, 20000, 23000, 25000,
+                27000, 30000};
 
         Local[] locales = {generarLocalAleatorio()};
 
