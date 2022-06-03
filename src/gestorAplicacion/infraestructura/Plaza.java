@@ -4,19 +4,28 @@ import gestorAplicacion.clientes.Cliente;
 import gestorAplicacion.clientes.Codeudor;
 import gestorAplicacion.clientes.Duenho;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase: Plaza
  * Esta clase es la clase que permite administrar la información de la plaza
  * @author: Daniel Puentes
  */
-public class Plaza {
+public class Plaza implements Serializable {
 
     // Constantes
-    public final static String nombre = "Frutas y verduras";
-    public final static double porcentajeAumentoConTecho = 1.15; // 15%
-    public final static double porcentajeAumentoConCamaraRefrigerante = 1.15; // 15%
+    private static final long serialVersionUID = 1L;
+
+    public final static String nombre = "CENTRAL LA NACHO";
+    public final static double PORCENTAJE_AUMENTO_CON_TECHO = 1.15; // 15%
+    public final static double PORCENTAJE_AUMENTO_CON_CAMARA_REFRIGERANTE = 1.15; // 15%
+
+    static List<Plaza> plazas;
+    static {
+        plazas = new ArrayList<Plaza>();
+    }
 
     // Atributos
     private ArrayList<Sector> sectores;
@@ -25,17 +34,11 @@ public class Plaza {
     private ArrayList<Codeudor> codeudores;
     private ArrayList<Contrato> contratos;
 
-
-
     /**
      * Este constructor sirve para inicializar los datos y asi evitar errores
      */
     public Plaza() {
-        sectores = new ArrayList<>();
-        duenhos = new ArrayList<>();
-        clientes = new ArrayList<>();
-        codeudores = new ArrayList<>();
-        contratos = new ArrayList<>();
+        this(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
     }
 
     /**
@@ -72,10 +75,17 @@ public class Plaza {
      */
     public int[] buscarLocal(int codigoLocal) {
 
-        for (int i = 0; i < sectores.size(); i++) // Recorriendo sectores
+        for (int i = 0; i < sectores.size(); i++) {// Recorriendo sectores {
             for (int j = 0; j < sectores.get(i).getLocales().size(); j++) // Recorriendo locales de cada sector
                 if (sectores.get(i).getLocales().get(j).getCodigo() == codigoLocal)
+                    return new int[]{i, j};
+        }
+
+        for (int i = 0; i < Sector.getSectores().size(); i++){
+            for (int j = 0; j < Sector.getSectores().get(i).getLocales().size(); j++)
+                if (Sector.getSectores().get(i).getLocales().get(j).getCodigo() == codigoLocal)
                     return new int[] {i, j};
+        }
 
         return new int[] {-1, -1};
 
@@ -94,6 +104,10 @@ public class Plaza {
         for (Sector sector : sectores)
             informacion += sector.retornarInformacionSinLocales() + "\n\n";
 
+        for (int i = 0; i < Sector.getSectores().size(); i++){
+            Sector sector = Sector.getSectores().get(i);
+            informacion += sector.retornarInformacionSinLocales() + "\n";
+        }
         return informacion;
     }
 
@@ -106,8 +120,13 @@ public class Plaza {
         String informacion = "";
 
         for (Sector sector : sectores)
-            informacion += sector.retornarInformacionLocales() + "\n\n";
+            informacion += sector.retornarInformacionLocales() + "\n";
 
+
+        for (int i = 0; i < Sector.getSectores().size(); i++){
+            Sector sector = Sector.getSectores().get(i);
+            informacion += sector.retornarInformacionLocales() + "\n";
+        }
         return informacion;
     }
 
@@ -121,6 +140,11 @@ public class Plaza {
 
         for (Codeudor codeudor : codeudores)
             informacion += codeudor.retornarInformacionCorta() + "\n\n";
+
+        for (int i = 0; i < Codeudor.getCodeudores().size(); i++){
+            Codeudor codeudor = Codeudor.getCodeudores().get(i);
+            informacion += codeudor.retornarInformacionCorta() + "\n";
+        }
 
         return informacion;
     }
@@ -136,6 +160,11 @@ public class Plaza {
         for (Cliente cliente : clientes)
             informacion += cliente.retornarInformacionCorta() + "\n\n";
 
+        for (int i = 0; i < Cliente.getClientes().size(); i++){
+            Cliente cliente = Cliente.getClientes().get(i);
+            informacion += cliente.retornarInformacionCorta() + "\n\n";
+        }
+
         return informacion;
     }
 
@@ -148,6 +177,11 @@ public class Plaza {
         for (int i = 0; i < sectores.size(); i++)
             if (sectores.get(i).getCodigo() == codigo)
                 return i;
+
+        for (int j = 0; j < Sector.getSectores().size(); j++){
+            if (Sector.getSectores().get(j).getCodigo() == codigo)
+                return j;
+        }
 
         return -1;
     }
@@ -171,9 +205,15 @@ public class Plaza {
      * @return El índice del cliente buscado si se encuentra, si no -1
      */
     public int buscarCliente(int cedula) {
-        for (int i = 0; i < clientes.size(); i++)
+        for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getCedula() == cedula)
                 return i;
+        }
+
+        for (int j = 0; j < Cliente.getClientes().size(); j++){
+            if (Cliente.getClientes().get(j).getCedula() == cedula)
+                return j;
+        }
 
         return -1;
     }
@@ -187,6 +227,11 @@ public class Plaza {
         for (int i = 0; i < codeudores.size(); i++)
             if (codeudores.get(i).getCedula() == cedula)
                 return i;
+
+        for (int j = 0; j < Codeudor.getCodeudores().size(); j++){
+            if (Codeudor.getCodeudores().get(j).getCedula() == cedula)
+                return j;
+        }
 
         return -1;
     }
@@ -269,6 +314,14 @@ public class Plaza {
      */
     public void setContratos(ArrayList<Contrato> contratos) {
         this.contratos = contratos;
+    }
+
+    public static List<Plaza> getPlazas() {
+        return plazas;
+    }
+
+    public static void setPlazas(List<Plaza> Plazas) {
+        Plaza.plazas = plazas;
     }
 
 }

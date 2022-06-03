@@ -16,8 +16,8 @@ public class Contrato implements Serializable {
     private int numero;
     private Date fechaInicio;
     private Date fechaFin;
-    private String fechaInicioSTR;
-    private String fechaFinSTR;
+    protected String fechaInicioSTR;
+    protected String fechaFinSTR;
     private int montoMensual;
     private String nombreInterventor;
     private int cedulaCliente;
@@ -26,23 +26,17 @@ public class Contrato implements Serializable {
     // Constantes
     private static final long serialVersionUID = 1L;
 
-    static List<Contrato> Contratos;
+    static List<Contrato> contratos;
     static {
-        Contratos = new ArrayList<Contrato>();
+        contratos = new ArrayList<Contrato>();
     }
 
     /**
      * Este constructor sirve para inicializar los datos y asi evitar errores
      */
     public Contrato() {
-        numero = 0;
-        fechaInicio = null;
-        fechaFin = null;
-        montoMensual = 0;
-        nombreInterventor = "";
-        cedulaCliente = 0;
-        codigoLocal = 0;
-        Contratos.add(this);
+        this(0, null, null, 0, "", 0, 0);
+        contratos.add(this);
     }
 
     /**
@@ -57,7 +51,7 @@ public class Contrato implements Serializable {
         this.nombreInterventor = nombreInterventor;
         this.cedulaCliente = cedulaCliente;
         this.codigoLocal = codigoLocal;
-        Contratos.add(this);
+        contratos.add(this);
     }
 
     /**
@@ -128,10 +122,10 @@ public class Contrato implements Serializable {
     }
 
     public static List<Contrato> getContratos() {
-        return Contratos;
+        return contratos;
     }
 
-    public static void setContratos(List<Contrato> Contratos) {
-        Contrato.Contratos = Contratos;
+    public static void setContratos(List<Contrato> contratos) {
+        Contrato.contratos = contratos;
     }
 }

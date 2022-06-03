@@ -35,6 +35,7 @@ public class Sector implements Serializable {
         nombre = "";
         precioBaseM2 = 0;
         locales = new ArrayList<>();
+        sectores.add(this);
     }
 
     /**
@@ -178,9 +179,5 @@ public class Sector implements Serializable {
 
     public static void setSectores(List<Sector> sectores) {
         Sector.sectores = sectores;
-    }
-
-    public String toString() {
-        return retornarInformacion();
     }
 }

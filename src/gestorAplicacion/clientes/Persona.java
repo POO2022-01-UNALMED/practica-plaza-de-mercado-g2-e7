@@ -1,5 +1,7 @@
 package gestorAplicacion.clientes;
 
+import java.io.Serializable;
+
 /**
  * Clase: Persona
  * Esta clase es abstracta, ya que no es de interés crear instancias de ella.
@@ -8,7 +10,12 @@ package gestorAplicacion.clientes;
  * @author: Daniel Puentes
  */
 
-public abstract class Persona {
+public abstract class Persona implements Serializable, Informacion{
+
+    // Constantes
+    private static final long serialVersionUID = 1L;
+
+    //Atributos
     protected int cedula;
     protected String nombre;
     protected int telefono;
@@ -20,12 +27,7 @@ public abstract class Persona {
      * Este constructor sirve para inicializar los datos y asi evitar errores
      */
     public Persona() {
-        cedula = 0;
-        nombre = "";
-        telefono = 0;
-        direccion = "";
-        genero = ' ';
-        estadoCivil = "";
+        this(0, "", 0, "", ' ', "");
     }
 
     /**
@@ -41,13 +43,6 @@ public abstract class Persona {
         this.estadoCivil = estadoCivil;
     }
 
-    /**
-     * Este método retorna la información completa de la clase, que puede ser utilizada
-     * para crear reportes y por ende listar las personas o simplemente ver la información
-     * de una persona
-     * @return La información completa de la clase
-     */
-    public abstract String retornarInformacion();
 
     /**
      * Este método retorna la cédula y el nombre de la persona, y se implementó para

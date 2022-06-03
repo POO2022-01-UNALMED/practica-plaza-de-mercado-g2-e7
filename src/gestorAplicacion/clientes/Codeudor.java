@@ -11,10 +11,7 @@ import java.util.List;
  * @author: Daniel Puentes
  */
 
-public class Codeudor extends Persona implements Serializable {
-
-	// Constantes
-	private static final long serialVersionUID = 1L;
+public class Codeudor extends Persona{
 
 	static List<Codeudor> codeudores;
 	static {
@@ -26,7 +23,7 @@ public class Codeudor extends Persona implements Serializable {
      */
     public Codeudor() {
     	super();
-    	codeudores.add(this);
+		codeudores.add(this);
     }
 
 	public Codeudor(int cedula, String nombre, int telefono, String direccion, char genero, String estadoCivil) {

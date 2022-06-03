@@ -5,9 +5,12 @@ import baseDatos.Serializador;
 import gestorAplicacion.clientes.*;
 import gestorAplicacion.infraestructura.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.Scanner;
 
+import static uMain.Automatizacion.*;
 
 
 /**
@@ -44,14 +47,14 @@ public class Main {
 
         while (!cedulaExistente) {
 
-            mostrarMensajes("Ingrese la cédula del dueño\n\n" + sector.mostrarDuenhos(duenhos));
+            mostrarMensajes("Ingrese la cédula del dueño\n\n" + sector.mostrarDuenhos(duenhos) + "\n");
 
             cedulaDuenho = sc.nextInt();
 
             cedulaExistente = sector.buscarDuenho(duenhos, cedulaDuenho);
 
             if (!cedulaExistente)
-                mostrarMensajes("Ingrese una cédula valida");
+                mostrarMensajes("Ingrese una cédula valida" + "\n");
 
         }
 
@@ -59,7 +62,7 @@ public class Main {
 
         sector.getLocales().add(nuevoLocal);
 
-        mostrarMensajes("Local agregado correctamente al sector");
+        mostrarMensajes("Local agregado correctamente al sector" + "\n");
 
     }
 
@@ -73,7 +76,7 @@ public class Main {
 
         plaza.getSectores().add(nuevoSector);
 
-        mostrarMensajes("Sector agregado correctamente a la plaza");
+        mostrarMensajes("Sector agregado correctamente a la plaza" + "\n");
     }
 
     /**
@@ -82,10 +85,10 @@ public class Main {
      */
     public static void agregarLocal() {
         if (plaza.getSectores().size() == 0 && Sector.getSectores().size() == 0) {
-            mostrarMensajes("Antes de agregar locales debe agregar sectores a la plaza");
+            mostrarMensajes("Antes de agregar locales debe agregar sectores a la plaza" + "\n");
         }
         else if (plaza.getDuenhos().size() == 0 && Duenho.getDuenhos().size() == 0) {
-            mostrarMensajes("Antes de agregar locales debe agregar dueños");
+            mostrarMensajes("Antes de agregar locales debe agregar dueños" + "\n");
         }
         else {
             int codigoSector = -1;
@@ -94,7 +97,7 @@ public class Main {
 
             while (indiceSector == -1) {
 
-                mostrarMensajes("Ingrese el codigo del sector donde sera agregado el local\n\n" + plaza.mostrarSectores());
+                mostrarMensajes("Ingrese el codigo del sector donde sera agregado el local\n\n" + plaza.mostrarSectores() + "\n");
 
                 codigoSector = sc.nextInt();
 
@@ -102,7 +105,7 @@ public class Main {
 
                 if (indiceSector == -1)
 
-                    mostrarMensajes("Ingrese un codigo de sector valido");
+                    mostrarMensajes("Ingrese un codigo de sector valido" + "\n");
 
             }
 
@@ -125,9 +128,10 @@ public class Main {
             mostrarMensajes("Ingrese la cedula del dueño");
 
             cedulaDuenho = sc.nextInt();
+            sc.nextLine();
 
             if (plaza.buscarDuenho(cedulaDuenho) != -1){
-                mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta");
+                mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta" + "\n");
             }
 
             else {
@@ -141,7 +145,7 @@ public class Main {
 
         plaza.getDuenhos().add(nuevoDuenho);
 
-        mostrarMensajes("Dueño registrado correctamente");
+        mostrarMensajes("Dueño registrado correctamente" + "\n");
     }
 
     /**
@@ -150,10 +154,9 @@ public class Main {
     public static void registrarCliente() {
         if ((plaza.getCodeudores().size() == 0 || plaza.getCodeudores().size() == 1)
         && (Codeudor.getCodeudores().size() == 0 || Codeudor.getCodeudores().size() == 1))
-            mostrarMensajes("Para registrar un cliente deben existir por lo menos 2 codeudores");
+            mostrarMensajes("Para registrar un cliente deben existir por lo menos 2 codeudores" + "\n");
 
         else {
-
             int cedulaCliente = -1;
 
             boolean cedulaExistente = true;
@@ -163,9 +166,10 @@ public class Main {
                 mostrarMensajes("Ingrese la cedula del cliente");
 
                 cedulaCliente = sc.nextInt();
+                sc.nextLine();
 
                 if (plaza.buscarCliente(cedulaCliente) != -1){
-                    mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta");
+                    mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta" + "\n");
                 }
 
                 else {
@@ -177,21 +181,21 @@ public class Main {
             nuevoCliente.setCedula(cedulaCliente);
             obtenerDatos(nuevoCliente);
 
-            int cedulaCodeudor1 = plaza.getCodeudores().get(seleccionarCodeudor(1)).getCedula();
+            int cedulaCodeudor1 = Codeudor.getCodeudores().get(seleccionarCodeudor(1)).getCedula();
             int cedulaCodeudor2;
 
             do {
 
-                cedulaCodeudor2 = plaza.getCodeudores().get(seleccionarCodeudor(2)).getCedula();
+                cedulaCodeudor2 = Codeudor.getCodeudores().get(seleccionarCodeudor(2)).getCedula();
 
                 if (cedulaCodeudor1 == cedulaCodeudor2)
-                    mostrarMensajes("Los codeudores deben ser distintos");
+                    mostrarMensajes("Los codeudores deben ser distintos" + "\n");
 
             } while (cedulaCodeudor1 == cedulaCodeudor2);
 
-            plaza.getClientes().add(nuevoCliente);
+            Cliente.getClientes().add(nuevoCliente);
 
-            mostrarMensajes("Cliente registrado correctamente");
+            mostrarMensajes("Cliente registrado correctamente" + "\n");
 
         }
     }
@@ -209,9 +213,10 @@ public class Main {
             mostrarMensajes("Ingrese la cedula del codeudor");
 
             cedulaCodeudor = sc.nextInt();
+            sc.nextLine();
 
             if (plaza.buscarCodeudor(cedulaCodeudor) != -1){
-                mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta");
+                mostrarMensajes("Esta cedula ya existe, por favor ingrese una distinta" + "\n");
             }
 
             else {
@@ -226,7 +231,7 @@ public class Main {
 
         plaza.getCodeudores().add(nuevoCodeudor);
 
-        mostrarMensajes("Codeudor registrado correctamente");
+        mostrarMensajes("Codeudor registrado correctamente" + "\n");
     }
 
     /**
@@ -234,39 +239,39 @@ public class Main {
      * y luego de esto se genera un contrato y es agregado a la lista de contratos
      */
     public static void alquilarLocal() {
-        if (plaza.getClientes().size() == 0)
-            mostrarMensajes("Para alquilar un local primero debe registrar clientes");
+        if (plaza.getClientes().size() == 0 && Cliente.getClientes().isEmpty())
+            mostrarMensajes("Para alquilar un local primero debe registrar clientes" + "\n");
 
-        else if (plaza.getSectores().size() == 0)
-            mostrarMensajes("Para alquilar un local primero debe agregar sectores");
+        else if (plaza.getSectores().size() == 0 && Sector.getSectores().isEmpty())
+            mostrarMensajes("Para alquilar un local primero debe agregar sectores" + "\n");
 
-        else if (plaza.obtenerCantidadLocales() == 0)
-            mostrarMensajes("Para alquilar un local primero debe agregar locales");
+        else if (plaza.obtenerCantidadLocales() == 0 && Local.getLocales().isEmpty())
+            mostrarMensajes("Para alquilar un local primero debe agregar locales" + "\n");
 
         else {
 
-            int cedulaCliente = plaza.getClientes().get(seleccionarCliente()).getCedula();
+            int cedulaCliente = Cliente.getClientes().get(seleccionarCliente()).getCedula();
 
             int[] indicesLocal = seleccionarLocal();
-            plaza.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]).setOcupado(true);
-            Local local = plaza.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]);
+            Sector.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]).setOcupado(true);
+            Local local = Sector.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]);
 
             int codigoLocal = local.getCodigo();
-            int montoMensual = local.getPrecioBase() + (plaza.getSectores().get(indicesLocal[0]).getPrecioBaseM2() * local.getTamanho());
-            montoMensual *= (local.getTecho()) ? Plaza.porcentajeAumentoConTecho : 1;
-            montoMensual *= (local.getCamaraRefrigerante()) ? Plaza.porcentajeAumentoConCamaraRefrigerante : 1;
+            int montoMensual = local.getPrecioBase() + (Sector.getSectores().get(indicesLocal[0]).getPrecioBaseM2() * local.getTamanho());
+            montoMensual *= (local.getTecho()) ? Plaza.PORCENTAJE_AUMENTO_CON_TECHO : 1;
+            montoMensual *= (local.getCamaraRefrigerante()) ? Plaza.PORCENTAJE_AUMENTO_CON_CAMARA_REFRIGERANTE : 1;
             montoMensual *= 1.2;
 
             Contrato contrato = new Contrato();
-            contrato.setNumero(plaza.getContratos().size() + 1);
+            contrato.setNumero(Contrato.getContratos().size() + 1);
             contrato.setCedulaCliente(cedulaCliente);
             contrato.setCodigoLocal(codigoLocal);
             contrato.setMontoMensual(montoMensual);
             obtenerDatos(contrato);
 
-            plaza.getContratos().add(contrato);
+            Contrato.getContratos().add(contrato);
 
-            mostrarMensajes("Alquiler completado correctamente");
+            mostrarMensajes("Alquiler completado correctamente" + "\n");
 
         }
     }
@@ -279,12 +284,12 @@ public class Main {
         int indice = -1;
 
         do {
-            mostrarMensajes("Ingrese la cedula del cliente\n\n" + plaza.mostrarClientes());
+            mostrarMensajes("Ingrese la cedula del cliente\n\n" + plaza.mostrarClientes() + "\n");
 
             indice = plaza.buscarCliente(sc.nextInt());
 
             if (indice == -1)
-                mostrarMensajes("No existe ningun cliente registrado con esta cedula");
+                mostrarMensajes("No existe ningun cliente registrado con esta cedula" + "\n");
 
         } while (indice == -1);
 
@@ -302,12 +307,12 @@ public class Main {
 
         do {
 
-            mostrarMensajes("Ingrese la cédula del codeudor #" + n + "\n\n" + plaza.mostrarCodeudores());
+            mostrarMensajes("Ingrese la cédula del codeudor #" + n + "\n\n" + plaza.mostrarCodeudores() + "\n");
 
             indice = plaza.buscarCodeudor(sc.nextInt());
 
             if (indice == -1)
-                mostrarMensajes("No existe ningún codeudor registrado con esta cédula");
+                mostrarMensajes("No existe ningún codeudor registrado con esta cédula" + "\n");
 
         } while (indice == -1);
 
@@ -321,13 +326,15 @@ public class Main {
     public static void mostrarLocalesDesocupados() {
         String listado = "Listado de los locales desocupados\n\n";
 
-        for (Sector sector : plaza.getSectores())
+        for (Sector sector : Sector.getSectores()) {
             for (Local local : sector.getLocales())
                 if (!local.isOcupado())
-                    listado += local.retornarInformacion() + "\n";
-                else{
-                    mostrarMensajes("No hay locales desocupados");
+                    listado += "\n" + local.retornarInformacion() + "\n\n";
+                else {
+                    mostrarMensajes("No hay locales desocupados" + "\n");
                 }
+        }
+
         mostrarMensajes(listado);
     }
 
@@ -337,12 +344,12 @@ public class Main {
     public static void mostrarLocalesOcupados() {
         String listado = "Listado de los locales ocupados\n\n";
 
-        for (Sector sector : plaza.getSectores())
+        for (Sector sector : Sector.getSectores())
             for (Local local : sector.getLocales())
                 if (local.isOcupado())
-                    listado += local.retornarInformacion() + "\n";
+                    listado += "\n" + local.retornarInformacion() + "\n\n";
                 else{
-                    mostrarMensajes("No hay locales desocupados");
+                    mostrarMensajes("No hay locales ocupados" + "\n");
                 }
         mostrarMensajes(listado);
     }
@@ -351,25 +358,25 @@ public class Main {
      * Este método muestra el historial de alquiler de un local elegido
      */
     public static void mostrarHistorialAlquilerLocal() {
-        if (plaza.obtenerCantidadLocales() == 0)
-            mostrarMensajes("No hay locales actualmente");
+        if (plaza.obtenerCantidadLocales() == 0 && Local.getLocales().isEmpty())
+            mostrarMensajes("No hay locales actualmente" + "\n");
 
         else {
 
             int[] indicesLocal = seleccionarLocal();
-            Local local = plaza.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]);
+            Local local = Sector.getSectores().get(indicesLocal[0]).getLocales().get(indicesLocal[1]);
 
             String informacion = "Historial de alquiler del local con codigo: " + local.getCodigo() + "\n\n";
             int totalDineroAdministracion = 0;
 
-            for (Contrato contrato : plaza.getContratos()) {
+            for (Contrato contrato : Contrato.getContratos()) {
 
                 informacion += contrato.retornarInformacion() + "\n";
                 totalDineroAdministracion += contrato.getMontoMensual();
 
             }
 
-            informacion += "\nTotal de dinero recaudado perteneciente a admnistracion: $" + totalDineroAdministracion;
+            informacion += "\nTotal de dinero recaudado perteneciente a admnistracion: $" + totalDineroAdministracion + "\n";
 
             mostrarMensajes(informacion);
 
@@ -391,15 +398,21 @@ public class Main {
 
             String informacion = "Listado de contratos vigentes en la fecha " + fechaBusquedaSTR + "\n\n";
 
-            for (Contrato contrato : plaza.getContratos())
+            for (Contrato contrato : plaza.getContratos()) {
                 if (fechaBusqueda.after(contrato.getFechaInicio()) && fechaBusqueda.before(contrato.getFechaFin()))
                     informacion += contrato.retornarInformacion() + "\n";
+            }
+
+            for (Contrato contrato : Contrato.getContratos()) {
+                if (fechaBusqueda.after(contrato.getFechaInicio()) && fechaBusqueda.before(contrato.getFechaFin()))
+                    informacion += contrato.retornarInformacion() + "\n";
+            }
 
             mostrarMensajes(informacion);
 
         }
         catch (ParseException ex) {
-            mostrarMensajes("La fecha ingresada no es valida");
+            mostrarMensajes("La fecha ingresada no es valida" + "\n");
         }
 
     }
@@ -413,12 +426,12 @@ public class Main {
 
         do {
 
-            mostrarMensajes("Ingrese el codigo del local\n\n" + plaza.mostrarLocales());
+            mostrarMensajes("Ingrese el codigo del local\n\n" + plaza.mostrarLocales() + "\n");
 
             indices = plaza.buscarLocal(sc.nextInt());
 
             if (indices[0] == - 1 || indices[1] == -1)
-                mostrarMensajes("No se encontro ningun local con el codigo seleccionado");
+                mostrarMensajes("No se encontro ningun local con el codigo seleccionado" + "\n");
 
         } while (indices[0] == - 1 || indices[1] == -1);
 
@@ -431,7 +444,7 @@ public class Main {
      * @Class Sector
      */
     public static void obtenerDatos(Sector obj) {
-        mostrarMensajes("Ingrese el nombre del sector");
+        mostrarMensajes("Ingrese el nombre del sector (sin dejar espacios)");
         String nombre = sc.next();
         obj.setNombre(nombre);
 
@@ -447,22 +460,24 @@ public class Main {
      */
     public static void obtenerDatos(Duenho obj) {
         mostrarMensajes("Ingrese el nombre del dueño");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         obj.setNombre(nombre);
 
         mostrarMensajes("Ingrese el telefono del dueño");
         int telefono = sc.nextInt();
+        sc.nextLine();
         obj.setTelefono(telefono);
 
         mostrarMensajes("Ingrese la dirección del dueño");
-        String direccion = sc.next();
+        String direccion = sc.nextLine();
         obj.setDireccion(direccion);
 
-        mostrarMensajes("Ingrese el genero del dueño");
+        mostrarMensajes("Ingrese el genero del dueño (M o F)");
         char genero = sc.next().charAt(0);
+        sc.nextLine();
         obj.setGenero(genero);
 
-        mostrarMensajes("Ingrese el estado civil del dueño");
+        mostrarMensajes("Ingrese el estado civil del dueño (sin dejar espacios)");
         String estado = sc.next();
         obj.setDireccion(estado);
     }
@@ -474,22 +489,24 @@ public class Main {
      */
     public static void obtenerDatos(Cliente obj) {
         mostrarMensajes("Ingrese el nombre del cliente");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         obj.setNombre(nombre);
 
         mostrarMensajes("Ingrese el telefono del cliente");
         int telefono = sc.nextInt();
+        sc.nextLine();
         obj.setTelefono(telefono);
 
         mostrarMensajes("Ingrese la dirección del cliente");
-        String direccion = sc.next();
+        String direccion = sc.nextLine();
         obj.setDireccion(direccion);
 
-        mostrarMensajes("Ingrese el genero del cliente");
+        mostrarMensajes("Ingrese el genero del cliente (M o F)");
         char genero = sc.next().charAt(0);
+        sc.nextLine();
         obj.setGenero(genero);
 
-        mostrarMensajes("Ingrese el estado civil del cliente");
+        mostrarMensajes("Ingrese el estado civil del cliente (sin dejar espacios)");
         String estado = sc.next();
         obj.setDireccion(estado);
     }
@@ -501,22 +518,24 @@ public class Main {
      */
     public static void obtenerDatos(Codeudor obj) {
         mostrarMensajes("Ingrese el nombre del codeudor");
-        String nombre = sc.next();
+        String nombre = sc.nextLine();
         obj.setNombre(nombre);
 
         mostrarMensajes("Ingrese el telefono del codeudor");
         int telefono = sc.nextInt();
+        sc.nextLine();
         obj.setTelefono(telefono);
 
         mostrarMensajes("Ingrese la dirección del codeudor");
-        String direccion = sc.next();
+        String direccion = sc.nextLine();
         obj.setDireccion(direccion);
 
-        mostrarMensajes("Ingrese el genero del codeudor");
+        mostrarMensajes("Ingrese el genero del codeudor (M o F)");
         char genero = sc.next().charAt(0);
+        sc.nextLine();
         obj.setGenero(genero);
 
-        mostrarMensajes("Ingrese el estado civil del codeudor");
+        mostrarMensajes("Ingrese el estado civil del codeudor (sin dejar espacios)");
         String estado = sc.next();
         obj.setDireccion(estado);
     }
@@ -527,7 +546,7 @@ public class Main {
      * @Class Contrato
      */
     public static void obtenerDatos(Contrato obj) {
-        mostrarMensajes("Ingrese nombre de interventor");
+        mostrarMensajes("Ingrese nombre de interventor (sin dejar espacios)");
         String nombreInterventor = sc.next();
         obj.setNombreInterventor(nombreInterventor);
 
@@ -543,7 +562,7 @@ public class Main {
 
                 fechaInicioCorrecta = true;
             } catch (ParseException ex) {
-                mostrarMensajes("La fecha ingresada no es valida");
+                mostrarMensajes("La fecha ingresada no es valida" + "\n");
             }
         }
 
@@ -560,7 +579,7 @@ public class Main {
 
                 fechaFinCorrecta = true;
             } catch (ParseException ex) {
-                mostrarMensajes("La fecha ingresada no es valida");
+                mostrarMensajes("La fecha ingresada no es valida" + "\n");
             }
         }
     }
@@ -571,11 +590,11 @@ public class Main {
      * @Class Local
      */
     public static void obtenerDatos(Local obj) {
-        mostrarMensajes("¿El local tiene techo?");
+        mostrarMensajes("¿El local tiene techo? (True o False)");
         boolean techo = sc.nextBoolean();
         obj.setTecho(techo);
 
-        mostrarMensajes("¿Tiene camara refrigerante?");
+        mostrarMensajes("¿Tiene camara refrigerante? (True o False)");
         boolean camaraRefrigerante = sc.nextBoolean();
         obj.setCamaraRefrigerante(camaraRefrigerante);
 
@@ -588,7 +607,7 @@ public class Main {
         obj.setPrecioBase(precioBase);
     }
 
-    public int menu() {
+    public static int menu() {
         mostrarMensajes(
                 "Menu - Sistema de la plaza '" + Plaza.nombre + "'"
                         + "\n\n1) Agregar sector a la plaza"
@@ -613,33 +632,35 @@ public class Main {
     public static void main(String[] args) {
         cargar();
 
-        Plaza plaza = new Plaza();
-        Main main = new Main();
-
         int opc = -1;
 
         while (opc != 12) {
-            opc = main.menu();
+            opc = menu();
 
             switch (opc) {
                 case 1:
                     agregarSector();
+                    guardar();
                     break;
 
                 case 2:
                     agregarLocal();
+                    guardar();
                     break;
 
                 case 3:
                     registrarDuenho();
+                    guardar();
                     break;
 
                 case 4:
                     registrarCliente();
+                    guardar();
                     break;
 
                 case 5:
                     registrarCodeudor();
+                    guardar();
                     break;
 
                 case 6:
@@ -672,7 +693,7 @@ public class Main {
                     break;
 
                 default:
-                    mostrarMensajes("Ingrese una opción valida");
+                    mostrarMensajes("Ingrese una opción valida" + "\n");
                     break;
             }
         }
@@ -686,74 +707,6 @@ public class Main {
         Deserializador.deserializarTodo();
     }
 
-    public static Sector generarSectorAleatorio() {
-        Random random = new Random();
-
-        int[] codigoSector = {99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85};
-
-        String[] nombreSector = {"Minorista", "Mayorista", "Placita", "Tunjuelito", "Galeria", "La Alameda"};
-
-        int[] precioBaseSector = {10000000, 13000000, 15000000, 17000000, 20000000, 23000000, 25000000,
-                27000000, 30000000};
-
-        Local[] locales = {
-                new Local(99, false, false, 500, 500000, 4378, false),
-                new Local(98, true, false, 800, 800000, 8435, false),
-                new Local(97, true, true, 400, 450000, 9647, false),
-                new Local(96, false, false, 500, 500000, 4378, false),
-                new Local(95, false, true, 480, 520000, 3574, false),
-        };
-
-        ArrayList<Local> sectorLocales = new ArrayList<Local>();
-        sectorLocales.add(locales[random.nextInt(locales.length)]);
-
-        return new Sector(codigoSector[random.nextInt(codigoSector.length)], nombreSector[random.nextInt(nombreSector.length)],
-                precioBaseSector[random.nextInt(precioBaseSector.length)], sectorLocales);
-
-    }
-
-    public static Duenho generarDuenhoAleatorio() {
-        Random random = new Random();
-
-        int[] cedulaDuenho = {1001, 1000, 1002, 1003, 1004, 1010, 1100};
-
-        String[] nombreDuenho = {"Daniel Puentes", "Fernanda Arango", "Thomas Rueda", "Andres Soto",
-                "Angela Patiño", "Mary Bayona", "Brandon Salinas"};
-
-        int[] telefonoDuenho = {2147000, 2054028, 6104548, 3927814, 5054028, 4440123, 2406038, 3054967};
-
-        String[] direccionDuenho = {"Cll 63", "Cra 45", "Cll 65", "Cra 80", "Dg 98", "Cll 10", "Cra 70"};
-
-        char[] generoDuenho = {'M', 'F'};
-
-        String[] estadoCivilDuenho = {"Soltero", "Casado", "Union Libre"};
-
-        return new Duenho(cedulaDuenho[random.nextInt(cedulaDuenho.length)], nombreDuenho[random.nextInt(nombreDuenho.length)],
-                telefonoDuenho[random.nextInt(telefonoDuenho.length)], direccionDuenho[random.nextInt(direccionDuenho.length)],
-                generoDuenho[random.nextInt(generoDuenho.length)], estadoCivilDuenho[random.nextInt(estadoCivilDuenho.length)]);
-    }
-
-    public static Codeudor generarCodeudorAleatorio() {
-        Random random = new Random();
-
-        int[] cedulaCodeudor = {2001, 2000, 2002, 2003, 2004, 2010, 2100};
-
-        String[] nombreCodeudor = {"Felipe Rocha", "Antonia Garcia", "Linda Perez", "Mario Guerra",
-                "Juan Gonzalez", "Jeronimo Ochoa", "Victor Orozco"};
-
-        int[] telefonoCodeudor = {5475233, 7845655, 7845112, 2561948, 417651, 9846511, 2506590, 5616518};
-
-        String[] direccionDuenho = {"Cll 36", "Cra 54", "Cll 56", "Cra 8", "Dg 89", "Cll 1", "Cra 7"};
-
-        char[] generoCodeudor = {'M', 'F'};
-
-        String[] estadoCivilCodeudor = {"Soltero", "Casado", "Union Libre"};
-
-        return new Codeudor(cedulaCodeudor[random.nextInt(cedulaCodeudor.length)], nombreCodeudor[random.nextInt(nombreCodeudor.length)],
-                telefonoCodeudor[random.nextInt(telefonoCodeudor.length)], direccionDuenho[random.nextInt(direccionDuenho.length)],
-                generoCodeudor[random.nextInt(generoCodeudor.length)], estadoCivilCodeudor[random.nextInt(estadoCivilCodeudor.length)]);
-    }
-
     public static int menuOpcionesAvanzadas(){
         mostrarMensajes(
                 "Bienvenido a las opciones avanzadas de '" + Plaza.nombre + "'"
@@ -762,7 +715,6 @@ public class Main {
                         + "\n3) Salir de opciones avanzadas"
                         + "\n\nSeleccione una opcion"
         );
-
         return sc.nextInt();
     }
     public static void opcionesAvanzadas() {
@@ -783,17 +735,15 @@ public class Main {
 
                 case 3:
                     guardar();
-                    mostrarMensajes("Saliendo de opciones avanzadas...");
+                    mostrarMensajes("Saliendo de opciones avanzadas..." + "\n");
                     break;
 
                 default:
-                    mostrarMensajes("Ingrese una opción valida");
+                    mostrarMensajes("Ingrese una opción valida" + "\n");
                     break;
             }
         }
     }
-
-
 
     public static int menuAutomatizacion() {
         mostrarMensajes(
@@ -801,7 +751,8 @@ public class Main {
                         + "\n\n1) Generar sector a la plaza"
                         + "\n2) Generar duenho aleatorio"
                         + "\n3) Generar codeudor aleatorio"
-                        + "\n4) Salir de automatizacion"
+                        + "\n4) Generar local aleatorio"
+                        + "\n5) Salir de automatizacion"
                         + "\n\nSeleccione una opcion"
         );
 
@@ -811,10 +762,12 @@ public class Main {
     public static int menuMostrar() {
         mostrarMensajes(
                 "Que deseas ver de '" + Plaza.nombre + "'"
-                        + "\n\n1) Mostrar sectores guardados"
-                        + "\n2) Mostrar duenhos guardados"
-                        + "\n3) Mostrar codeudores guardados"
-                        + "\n4) Salir de menu de mostrar datos"
+                        + "\n\n1) Mostrar sectores almacenados"
+                        + "\n2) Mostrar duenhos almacenados"
+                        + "\n3) Mostrar codeudores almacenados"
+                        + "\n4) Mostrar locales almacenados"
+                        + "\n5) Mostrar clientes almacenados"
+                        + "\n6) Salir de menu de mostrar datos"
                         + "\n\nSeleccione una opcion"
         );
 
@@ -825,10 +778,11 @@ public class Main {
         Sector sector;
         Duenho duenho;
         Codeudor codeudor;
+        Local local;
 
         int opc3 = -1;
 
-        while (opc3 != 4) {
+        while (opc3 != 5) {
 
             opc3 = menuAutomatizacion();
 
@@ -836,24 +790,35 @@ public class Main {
                 case 1:
                     sector = generarSectorAleatorio();
                     mostrarMensajes("Se genero satisfactoriamente el sector: " + (Sector.getSectores().size() - 1)
-                            + sector.retornarInformacion() + "\n");
+                            + "\n" + sector.retornarInformacionSinLocales() + "\n");
+                    break;
 
                 case 2:
                     duenho = generarDuenhoAleatorio();
                     mostrarMensajes("Se genero satisfactoriamente el duenho: " + (Duenho.getDuenhos().size() - 1)
-                            + duenho.retornarInformacion() + "\n");
+                            + "\n" + duenho.retornarInformacionCorta() + "\n");
+                    break;
 
                 case 3:
                     codeudor = generarCodeudorAleatorio();
                     mostrarMensajes("Se genero satisfactoriamente el codeudor: " + (Codeudor.getCodeudores().size() - 1)
-                            + codeudor.retornarInformacion() + "\n");
+                            + "\n" + codeudor.retornarInformacionCorta() + "\n");
+                    break;
 
                 case 4:
+                    local = generarLocalAleatorio();
+                    mostrarMensajes("Se genero satisfactoriamente el local: " + (Local.getLocales().size() - 1)
+                            + "\n" + local.retornarInformacion() + "\n");
+                    break;
+
+                case 5:
                     guardar();
-                    mostrarMensajes("Saliendo del menu de automatizacion...");
+                    mostrarMensajes("Saliendo del menu de automatizacion..." + "\n");
+                    break;
 
                 default:
-                    mostrarMensajes("Ingrese una opcion valida");
+                    mostrarMensajes("Ingrese una opcion valida" + "\n");
+                    break;
             }
         }
     }
@@ -862,42 +827,81 @@ public class Main {
         Sector sector;
         Duenho duenho;
         Codeudor codeudor;
+        Local local;
+        Cliente cliente;
 
         int opc4 = -1;
 
-        while (opc4 != 4) {
+        while (opc4 != 6) {
 
             opc4 = menuMostrar();
 
             switch (opc4) {
                 case 1:
-                    for (int i = 0; i < Sector.getSectores().size(); i++){
-                        sector = Sector.getSectores().get(i);
-                        mostrarMensajes("Sector: " + i + sector.retornarInformacion());
+                    if (Sector.getSectores().isEmpty()) {
+                        mostrarMensajes("En este momento no hay sectores almacenados" + "\n");
+                    }
+                    else {
+                        for (int i = 0; i < Sector.getSectores().size(); i++) {
+                            sector = Sector.getSectores().get(i);
+                            mostrarMensajes("Sector: " + i + "\n" + sector.retornarInformacionSinLocales() + "\n");
+                        }
                     }
                     break;
 
                 case 2:
-                    for (int i = 0; i < Duenho.getDuenhos().size(); i++){
-                        duenho = Duenho.getDuenhos().get(i);
-                        mostrarMensajes("Duenho: " + i + duenho.retornarInformacion());
+                    if (Duenho.getDuenhos().isEmpty()){
+                        mostrarMensajes("En este momento no hay duenhos almacenados" + "\n");
+                    }
+                    else {
+                        for (int i = 0; i < Duenho.getDuenhos().size(); i++) {
+                            duenho = Duenho.getDuenhos().get(i);
+                            mostrarMensajes("Duenho: " + i + "\n" + duenho.retornarInformacion() + "\n");
+                        }
                     }
                     break;
 
                 case 3:
-                    for (int i = 0; i < Codeudor.getCodeudores().size(); i++){
-                        codeudor = Codeudor.getCodeudores().get(i);
-                        mostrarMensajes("Codeudor: " + i + codeudor.retornarInformacion());
+                    if (Codeudor.getCodeudores().isEmpty()){
+                        mostrarMensajes("En este momento no hay codeudores almacenados" + "\n");
+                    }
+                    else {
+                        for (int i = 0; i < Codeudor.getCodeudores().size(); i++) {
+                            codeudor = Codeudor.getCodeudores().get(i);
+                            mostrarMensajes("Codeudor: " + i + "\n" + codeudor.retornarInformacion() + "\n");
+                        }
                     }
                     break;
 
                 case 4:
+                    if (Local.getLocales().isEmpty()){
+                        mostrarMensajes("En este momento no hay locales almacenados" + "\n");
+                    }
+                    else {
+                        for (int i = 0; i < Local.getLocales().size(); i++) {
+                            local = Local.getLocales().get(i);
+                            mostrarMensajes("Local: " + i + "\n" + local.retornarInformacion() + "\n");
+                        }
+                    }
+                    break;
+
+                case 5:
+                    if (Cliente.getClientes().isEmpty()){
+                        mostrarMensajes("En este momento no hay clientes almacenados" + "\n");
+                    }
+                    for (int i = 0; i < Cliente.getClientes().size(); i++){
+                        cliente = Cliente.getClientes().get(i);
+                        mostrarMensajes("Cliente: " + i + "\n" + cliente.retornarInformacion() + "\n");
+                    }
+                    break;
+
+                case 6:
                     guardar();
-                    mostrarMensajes("Saliendo del menu de mostrar...");
+                    mostrarMensajes("Saliendo del menu de mostrar..." + "\n");
                     break;
 
                 default:
-                    mostrarMensajes("Ingrese una opcion valida");
+                    mostrarMensajes("Ingrese una opcion valida" + "\n");
                     break;
             }
         }

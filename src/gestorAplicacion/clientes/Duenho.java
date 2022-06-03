@@ -6,14 +6,11 @@ import java.util.List;
 
 /**
  * Clase: Duenho
- * Esta clase es la clase que permite administrar la informaci�n de los due�os
+ * Esta clase es la clase que permite administrar la informacion de los due�os
  * @author: Daniel Puentes
  */
 
-public class Duenho extends Persona implements Serializable {
-
-	// Constantes
-	private static final long serialVersionUID = 1L;
+public class Duenho extends Persona{
 
 	static List<Duenho> duenhos;
 	static {
@@ -35,9 +32,9 @@ public class Duenho extends Persona implements Serializable {
 	}
 
 	/**
-	 * Este m�todo es implementado de la clase Persona, retorna la c�dula y el nombre de la persona,
-	 * y se implement� para que al momento de listar las personas se diera una informaci�n resumida
-	 * @return La c�dula y el nombre de la persona
+	 * Este metodo es implementado de la clase Persona, retorna la cedula y el nombre de la persona,
+	 * y se implementa para que al momento de listar las personas se diera una informacion resumida
+	 * @return La cedula y el nombre de la persona
 	 */
 	public String retornarInformacion() {
 		return "Cedula: " + cedula + "\nNombre: " + nombre + "\nTelefono: " + telefono + "\nDireccion: " + direccion

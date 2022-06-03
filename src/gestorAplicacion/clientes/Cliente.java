@@ -1,7 +1,5 @@
 package gestorAplicacion.clientes;
 
-import baseDatos.Serializador;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +10,7 @@ import java.util.List;
  * @author: Daniel Puentes
  */
 
-public class Cliente extends Persona implements Serializable {
+public class Cliente extends Persona {
 
 	private int cedulaCodeudor1;
 	private int cedulaCodeudor2;
@@ -20,10 +18,6 @@ public class Cliente extends Persona implements Serializable {
 	static {
 		clientes = new ArrayList<Cliente>();
 	}
-
-	// Constantes
-	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * Este constructor es usado para llamar al constructor de la clase Persona

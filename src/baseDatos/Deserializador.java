@@ -76,5 +76,6 @@ public class Deserializador {
 		Deserializador.deserializador(Contrato.getContratos(), "Contratos");
 		Deserializador.deserializador(Sector.getSectores(), "Sectores");
 		Deserializador.deserializador(Local.getLocales(), "Locales");
+		Deserializador.deserializador(Plaza.getPlazas(), "Plazas");
 	}
 }

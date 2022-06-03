@@ -55,5 +55,6 @@ public class Serializador {
 		Serializador.serializar(Contrato.getContratos(), "Contratos");
 		Serializador.serializar(Sector.getSectores(), "Sectores");
 		Serializador.serializar(Local.getLocales(), "Locales");
+		Serializador.serializar(Plaza.getPlazas(), "Plazas");
 	}
 }
